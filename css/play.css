@@ -1,0 +1,376 @@
+/* ============================================================
+   PLAY PAGE — scattered collage of visual elements
+   Elements absolutely positioned within a fixed-aspect stage
+   so the whole composition scales proportionally.
+   ============================================================ */
+
+/* --- Nav --------------------------------------------------- */
+.site-nav {
+  padding-block: var(--space-4);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-nav__list { gap: var(--space-6); }
+
+.site-nav__list a {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  transition: opacity var(--duration-fast) ease;
+}
+
+.site-nav__list a:hover { opacity: 0.55; }
+.site-nav__list a[aria-current="page"] { font-weight: 700; }
+
+.site-nav .container { max-width: none; padding-inline: 80px; }
+
+/* --- Page shell -------------------------------------------- */
+.play-page { padding-top: 56px; }
+
+/* ============================================================
+   STAGE — design coordinate system maps to x:[0,1440] y:[110,820]
+   aspect-ratio = 1440 / 710
+   ============================================================ */
+.play-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  aspect-ratio: 1440 / 830;   /* design region y:[90,920] */
+}
+
+/* Each collage element */
+.play-el {
+  position: absolute;
+  display: block;
+  user-select: none;
+}
+
+.play-el img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+}
+
+/* ============================================================
+   ELEMENT PLACEMENT  (left/top/width as % of the stage)
+   ============================================================ */
+.el-green-bean   { left: 24.6%; top: 60.1%; width: 18.4%; z-index: 1; }
+.el-green-mound  { left: 38.6%; top: 67.1%; width: 19.8%; z-index: 1; }
+.el-purple-bean  { left: 65.0%; top: 49.3%; width: 11.5%; z-index: 1; }
+.el-blue-star    { left: 30.1%; top: 28.3%; width: 19.8%; z-index: 2; }
+.el-blue-lake    { left: 51.7%; top: 35.0%; width: 18.0%; z-index: 2; }
+.el-purple-tuffet{ left: 52.8%; top: 55.8%; width: 9.8%;  z-index: 2; }
+.el-copic        { left: 28.0%; top: 32.3%; width: 12.8%; z-index: 4;
+                   transform: rotate(-20deg); transform-origin: center; }
+.el-egg-cup      { left: 59.8%; top: 17.7%; width: 5.9%;  z-index: 4; }
+.el-palette      { left: 67.5%; top: 41.7%; width: 12.5%; z-index: 4; }
+.el-moma         { left: 17.6%; top: 67.6%; width: 19.8%; z-index: 4; }
+.el-home         { left: 42.7%; top: 69.3%; width: 14.9%; z-index: 4; }
+.el-red-flower   { left: 48.9%; top: 26.0%; width: 8.6%;  z-index: 4; }
+.el-tan-paw      { left: 21.7%; top: 46.9%; width: 8.3%;  z-index: 4; }
+.el-arrow        { left: 58.1%; top: 72.1%; width: 4.3%;  z-index: 6; }
+
+/* ============================================================
+   MICRO-INTERACTIONS — subtle wiggle on hover
+   Only: egg-cup, home, copic, palette, moma. Others stay static.
+   ============================================================ */
+@keyframes play-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  20%      { transform: rotate(-3deg); }
+  60%      { transform: rotate(3deg); }
+  80%      { transform: rotate(-1.5deg); }
+}
+
+/* copic keeps its -20deg base tilt while wiggling */
+@keyframes play-wiggle-copic {
+  0%, 100% { transform: rotate(-20deg); }
+  20%      { transform: rotate(-24deg); }
+  60%      { transform: rotate(-16deg); }
+  80%      { transform: rotate(-21.5deg); }
+}
+
+.el-egg-cup,
+.el-home,
+.el-palette,
+.el-moma,
+.el-copic { cursor: pointer; }
+
+.el-egg-cup:hover,
+.el-home:hover,
+.el-palette:hover,
+.el-moma:hover {
+  animation: play-wiggle 0.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.el-copic:hover {
+  animation: play-wiggle-copic 0.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .el-egg-cup:hover,
+  .el-home:hover,
+  .el-palette:hover,
+  .el-moma:hover,
+  .el-copic:hover { animation: none; }
+}
+
+/* ============================================================
+   FOOTER — same link style as other pages
+   ============================================================ */
+/* ABOUT (left) / WORK (right) pills above the footer — mirrors the
+   design-principles page nav placement/style. */
+.play-page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-16);
+  padding: 0 80px var(--space-12);
+}
+
+.play-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+.play-nav-pill:hover {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+.play-footer {
+  border-top: 1px solid var(--color-border);
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-24);
+  width: 100%;
+}
+
+.play-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.play-footer__links a,
+.play-footer__links button,
+.play-footer__links .footer-credit {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.play-footer__links a:hover,
+.play-footer__links button:hover { opacity: 0.55; }
+
+/* Copyright line is not a link — keep the default arrow cursor */
+.play-footer__links .footer-credit { cursor: default; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .site-nav .container { padding-inline: 40px; }
+  .play-footer { padding-inline: 40px; }
+  .play-page-nav { padding-inline: 40px; }
+}
+
+@media (max-width: 767px) {
+  .site-nav .container { padding-inline: 20px; }
+  .play-footer { padding-inline: 20px; }
+  .play-page-nav { padding-inline: 20px; }
+}
+
+/* ============================================================
+   PLAY SLIDERS — slide-in panels
+   Shared layout. Each panel sets its own --panel-bg.
+     window-displays (moma) ....... #3BFF46
+     ceramics (egg cup) ........... #6BAEED
+     paintings (palette) .......... #6C2EEB
+     interior-design (home) ....... #0B8D67
+     drawings (copic) ............. #92DAFF
+   ============================================================ */
+
+/* Trigger button wrapper around the collage image */
+.wd-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.wd-trigger img { display: block; width: 100%; height: auto; }
+
+/* Panel — slides in from the right */
+.wd-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 51vw;
+  background: var(--panel-bg, #3BFF46);
+  transform: translateX(105%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: var(--z-modal, 300);
+  will-change: transform;
+}
+.wd-panel.is-open { transform: translateX(0); }
+
+/* Close (X) button — stays fixed at the panel's top-left while content scrolls */
+.wd-close {
+  position: absolute;
+  top: 9.5vh;
+  left: 4%;
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid var(--color-text-primary);
+  border-radius: var(--radius-full);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--duration-fast) ease;
+}
+.wd-close:hover { background: rgba(8, 31, 73, 0.08); }
+.wd-close svg { display: block; }
+.wd-close line { stroke: var(--color-text-primary); stroke-width: 1.5; }
+
+/* Scroll area — fills the panel; images move up as the user scrolls */
+.wd-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 9.5vh 3.8% 8vh 4%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Two-column inner grid: text (left) + image stack (right) */
+.wd-grid {
+  display: grid;
+  grid-template-columns: 33% 56%;
+  column-gap: 3%;
+  align-items: start;
+}
+
+/* Text column — pushed down so it clears the X button */
+.wd-text {
+  padding-top: calc(48px + 1.4rem);   /* X height + gap */
+}
+
+.wd-text p {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  line-height: 1.45;
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-primary);
+}
+.wd-text p + p { margin-top: 1.4rem; }
+
+/* Stacked text blocks (interior-design: paragraph + WATCH/READ button) */
+.wd-block + .wd-block { margin-top: 2rem; }
+
+/* Outline pill button inside a text block (WATCH / READ) */
+.wd-btn {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-6);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+.wd-btn:hover {
+  background: var(--color-text-primary);
+  color: var(--panel-bg, #3BFF46);
+}
+
+/* Image column — stacked photos that scroll vertically */
+.wd-images {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  /* Align the top of the images with the top of the left text box
+     (i.e. below the X), not with the top of the X. */
+  padding-top: calc(48px + 1.4rem);
+}
+.wd-images img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Captioned image (paintings / drawings) */
+.wd-figure { margin: 0; }
+.wd-figure figcaption {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(0.78rem, 0.9vw, 0.92rem);
+  line-height: 1.4;
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-primary);
+  margin-top: 8px;
+}
+
+/* Paintings panel uses white text on its purple background */
+#slider-paintings .wd-text p,
+#slider-paintings .wd-figure figcaption { color: #fff; }
+#slider-paintings .wd-close { border-color: #fff; }
+#slider-paintings .wd-close line { stroke: #fff; }
+
+/* Interior-design panel uses white text on its dark green background */
+#slider-interior-design .wd-text p,
+#slider-interior-design .wd-figure figcaption { color: #fff; }
+#slider-interior-design .wd-btn { color: #fff; border-color: #fff; }
+#slider-interior-design .wd-btn:hover { background: #fff; color: var(--panel-bg); }
+#slider-interior-design .wd-close { border-color: #fff; }
+#slider-interior-design .wd-close line { stroke: #fff; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .wd-panel { width: 88vw; }
+  .wd-grid { grid-template-columns: 1fr; row-gap: 1.5rem; }
+  .wd-text { padding-top: calc(48px + 1rem); }
+  .wd-images { padding-top: 0; }   /* single column — no top offset needed */
+}

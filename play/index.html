@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Play — Ellen Rose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css?v=10" />
+  <link rel="stylesheet" href="../css/base.css?v=20" />
+  <link rel="stylesheet" href="../css/play.css?v=12" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <ul class="site-nav__list">
+        <li><a href="/">About</a></li>
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/play/" aria-current="page">Play</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="play-page" id="play">
+
+    <!-- COLLAGE STAGE -->
+    <div class="play-stage">
+
+      <!-- back-layer blobs -->
+      <div class="play-el el-blue-star">
+        <img src="../assets/images/blue-star.png" alt="" />
+      </div>
+      <div class="play-el el-green-bean">
+        <img src="../assets/images/green-bean.png" alt="" />
+      </div>
+      <div class="play-el el-green-mound">
+        <img src="../assets/images/green-mound.png" alt="" />
+      </div>
+      <div class="play-el el-purple-bean">
+        <img src="../assets/images/purple-bean.png" alt="" />
+      </div>
+      <div class="play-el el-purple-tuffet">
+        <img src="../assets/images/purple-tuffet.png" alt="" />
+      </div>
+
+      <!-- mid / front layer -->
+      <div class="play-el el-copic">
+        <button class="wd-trigger" type="button" data-slider="drawings" aria-label="Open Drawings">
+          <img src="../assets/images/copic.png" alt="Copic marker" />
+        </button>
+      </div>
+      <div class="play-el el-blue-lake">
+        <img src="../assets/images/blue-lake.png" alt="" />
+      </div>
+      <div class="play-el el-egg-cup">
+        <button class="wd-trigger" type="button" data-slider="ceramics" aria-label="Open Ceramics">
+          <img src="../assets/images/egg-cup.png" alt="Egg in an egg cup" />
+        </button>
+      </div>
+      <div class="play-el el-red-flower">
+        <img src="../assets/images/red-flower.png" alt="" />
+      </div>
+      <div class="play-el el-tan-paw">
+        <img src="../assets/images/tan-paw.png" alt="Waving hand" />
+      </div>
+      <div class="play-el el-palette">
+        <button class="wd-trigger" type="button" data-slider="paintings" aria-label="Open Paintings">
+          <img src="../assets/images/palette.png" alt="Paint palette viewed through a magnifier" />
+        </button>
+      </div>
+      <div class="play-el el-home">
+        <button class="wd-trigger" type="button" data-slider="interior-design" aria-label="Open Interior Design">
+          <img src="../assets/images/home.png" alt="House illustration" />
+        </button>
+      </div>
+      <div class="play-el el-moma">
+        <button class="wd-trigger" type="button" data-slider="window-displays" aria-label="Open Window Displays">
+          <img src="../assets/images/moma-window-rendering.png" alt="Window display rendering" />
+        </button>
+      </div>
+
+      <!-- cursor -->
+      <div class="play-el el-arrow">
+        <img src="../assets/images/arrow.png" alt="" />
+      </div>
+
+    </div>
+
+    <!-- ABOUT (left) / WORK (right) pills, above the footer -->
+    <div class="play-page-nav">
+      <a class="play-nav-pill" href="/">About</a>
+      <a class="play-nav-pill" href="/work/">Work</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="play-footer">
+      <div class="play-footer__links">
+        <a href="/resume/">Resume</a>
+        <a href="https://www.linkedin.com/in/ellenrose" target="_blank" rel="noopener">LinkedIn</a>
+        <button
+          aria-label="Copy email address"
+          onclick="navigator.clipboard.writeText('ellenhrose@gmail.com').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy my email address and write to me →', 1500); })"
+        >Copy my email address and write to me →</button>
+        <span class="footer-credit">© Ellen Rose, 2026</span>
+      </div>
+    </footer>
+
+    <!-- ── WINDOW DISPLAYS SLIDER ─────────────────────────────── -->
+    <aside class="wd-panel" id="slider-window-displays" aria-label="Window Displays" aria-hidden="true">
+      <button class="wd-close" type="button" aria-label="Close Window Displays">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <line x1="3" y1="3" x2="17" y2="17" />
+          <line x1="17" y1="3" x2="3" y2="17" />
+        </svg>
+      </button>
+      <div class="wd-scroll">
+        <div class="wd-grid">
+          <div class="wd-text">
+            <p>Once upon a time I designed and installed window displays for iconic New York City retailers like Anthropologie, Saks Fifth Avenue, and MoMA Design Store.</p>
+            <p>I was the Creative Services Manager for window designs, globally, at J. Crew corporate headquarters before I went back to grad school to reposition into experience design and creative strategy.</p>
+          </div>
+          <div class="wd-images">
+            <img src="../assets/images/window display 0.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/window display 1.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/window display 3.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/window display 4.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/window display 5.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/window display 6.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/window display 7.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/window display 8.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/window display 9.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/window display 10.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── CERAMICS SLIDER (egg cup) ──────────────────────────── -->
+    <aside class="wd-panel" id="slider-ceramics" style="--panel-bg:#6BAEED" aria-label="Ceramics" aria-hidden="true">
+      <button class="wd-close" type="button" aria-label="Close Ceramics">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <line x1="3" y1="3" x2="17" y2="17" /><line x1="17" y1="3" x2="3" y2="17" />
+        </svg>
+      </button>
+      <div class="wd-scroll">
+        <div class="wd-grid">
+          <div class="wd-text">
+            <p>I make ceramics.</p>
+          </div>
+          <div class="wd-images">
+            <img src="../assets/images/ceramics 2.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/ceramics 3.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/ceramics 4.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/ceramics 5.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── PAINTINGS SLIDER (palette) ─────────────────────────── -->
+    <aside class="wd-panel" id="slider-paintings" style="--panel-bg:#6C2EEB" aria-label="Paintings" aria-hidden="true">
+      <button class="wd-close" type="button" aria-label="Close Paintings">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <line x1="3" y1="3" x2="17" y2="17" /><line x1="17" y1="3" x2="3" y2="17" />
+        </svg>
+      </button>
+      <div class="wd-scroll">
+        <div class="wd-grid">
+          <div class="wd-text">
+            <p>I paint in acrylics and watercolors. Mostly abstract patterns.</p>
+          </div>
+          <div class="wd-images">
+            <img src="../assets/images/painting 1.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/painting 2.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/painting 3.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/painting 4.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/painting 6.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/painting 7.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── INTERIOR DESIGN SLIDER (home) ──────────────────────── -->
+    <aside class="wd-panel" id="slider-interior-design" style="--panel-bg:#0B8D67" aria-label="Interior Design" aria-hidden="true">
+      <button class="wd-close" type="button" aria-label="Close Interior Design">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <line x1="3" y1="3" x2="17" y2="17" /><line x1="17" y1="3" x2="3" y2="17" />
+        </svg>
+      </button>
+      <div class="wd-scroll">
+        <div class="wd-grid">
+          <div class="wd-text">
+            <div class="wd-block">
+              <p>My 1884 Victorian home (along with my family and I) were featured on the show "Diary of an Old Home" on HBO Max and Disney+</p>
+              <!-- TODO: replace href with the episode/watch URL -->
+              <a class="wd-btn" href="#" target="_blank" rel="noopener">Watch</a>
+            </div>
+            <div class="wd-block">
+              <p>I wrote about my adventures in interior design, from the perspective of a design-thinking practitioner.</p>
+              <!-- TODO: replace href with the article URL -->
+              <a class="wd-btn" href="#" target="_blank" rel="noopener">Read</a>
+            </div>
+          </div>
+          <div class="wd-images">
+            <img src="../assets/images/interior-design-foyer.png" alt="Interior" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── DRAWINGS SLIDER (copic) ────────────────────────────── -->
+    <aside class="wd-panel" id="slider-drawings" style="--panel-bg:#92DAFF" aria-label="Drawings" aria-hidden="true">
+      <button class="wd-close" type="button" aria-label="Close Drawings">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <line x1="3" y1="3" x2="17" y2="17" /><line x1="17" y1="3" x2="3" y2="17" />
+        </svg>
+      </button>
+      <div class="wd-scroll">
+        <div class="wd-grid">
+          <div class="wd-text">
+            <p>I draw flowers, bunnies, and abstract patterns. I love the meditative effect of repetitive mark making. I also make illustrations for select client projects.</p>
+          </div>
+          <div class="wd-images">
+            <img src="../assets/images/drawing 1.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/drawing 2.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/drawing 3.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/drawing 4.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <img src="../assets/images/drawing 5.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="../js/main.js" type="module"></script>
+  <script>
+    // Play sliders: open on collage trigger, close on X / Escape / click outside (cream bg)
+    (() => {
+      const panels = [...document.querySelectorAll('.wd-panel')];
+      if (!panels.length) return;
+
+      const closeAll = () => panels.forEach((p) => {
+        p.classList.remove('is-open');
+        p.setAttribute('aria-hidden', 'true');
+      });
+
+      const openPanel = (id) => {
+        closeAll();
+        const p = document.getElementById(id);
+        if (!p) return;
+        p.classList.add('is-open');
+        p.setAttribute('aria-hidden', 'false');
+        const s = p.querySelector('.wd-scroll');
+        if (s) s.scrollTop = 0;
+      };
+
+      // Triggers (collage elements)
+      document.querySelectorAll('[data-slider]').forEach((t) =>
+        t.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openPanel('slider-' + t.dataset.slider);
+        })
+      );
+
+      // Close buttons (X)
+      panels.forEach((p) =>
+        p.querySelector('.wd-close').addEventListener('click', closeAll)
+      );
+
+      // Click anywhere outside an open panel (e.g. the cream background) closes it
+      document.addEventListener('click', (e) => {
+        if (!panels.some((p) => p.classList.contains('is-open'))) return;
+        if (e.target.closest('.wd-panel') || e.target.closest('[data-slider]')) return;
+        closeAll();
+      });
+
+      // Escape closes
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAll();
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(git *)",
+      "Bash(vercel *)"
+    ],
+    "deny": [
+      "Read(~/Documents/*)",
+      "Read(~/Desktop/*)",
+      "Read(~/Downloads/*)",
+      "Read(~/Library/*)",
+      "Read(~/.ssh/*)",
+      "Read(./.env*)",
+      "WebFetch(domain:google.com)",
+      "WebFetch(domain:googleapis.com)",
+      "WebFetch(domain:gmail.com)",
+      "WebFetch(domain:drive.google.com)"
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5 Design Principles for the AI-Era — Ellen Rose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css?v=16" />
+  <link rel="stylesheet" href="../css/base.css?v=20" />
+  <link rel="stylesheet" href="../css/about.css?v=16" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <ul class="site-nav__list">
+        <li><a href="/">About</a></li>
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/play/">Play</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE -->
+  <main class="about-page" id="design-principles">
+
+    <!-- Centered principles image, with vertical space above and below -->
+    <div class="principles-figure">
+      <img
+        src="../assets/images/Design-Principles-for-the-AI-Era.png"
+        alt="Ellen Rose — 5 Design Principles for the AI-Era"
+      />
+    </div>
+
+    <!-- Back / Work pills, above the footer line -->
+    <div class="about-page-nav">
+      <a class="footer-next" href="/">Back</a>
+      <a class="footer-next" href="/work/">Work</a>
+    </div>
+
+    <!-- ── FOOTER ─────────────────────────────────────────────── -->
+    <footer class="about-footer">
+      <div class="footer-links">
+        <a href="/resume/">Resume</a>
+        <a href="https://www.linkedin.com/in/ellenrose" target="_blank" rel="noopener">LinkedIn</a>
+        <button
+          aria-label="Copy email address"
+          onclick="navigator.clipboard.writeText('ellenhrose@gmail.com').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy my email address and write to me →', 1500); })"
+        >Copy my email address and write to me →</button>
+        <span class="footer-credit">© Ellen Rose, 2026</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="../js/main.js" type="module"></script>
+</body>
+</html>

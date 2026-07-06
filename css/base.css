@@ -1,0 +1,145 @@
+/* tokens loaded via <link> in each page's <head> */
+
+/* ============================================================
+   BASE / RESET
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  /* Clip horizontal overflow (e.g. the off-screen Play sliders) here on <html>
+     so <body> is NOT turned into a scroll container — that nested-scroll setup
+     was causing subtle clipping at the bottom of the page. */
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  min-height: 100dvh;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+
+.font-sans   { font-family: var(--font-sans); }
+.font-serif  { font-family: var(--font-serif); }
+
+/* ============================================================
+   NAV  (shell — styles added per page design)
+   ============================================================ */
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+}
+
+.site-nav__list {
+  display: flex;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+/* ============================================================
+   PASSWORD GATE  (overlay for protected work pages)
+   ============================================================ */
+
+.password-gate {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background-color: var(--color-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-gate[hidden] { display: none; }
+
+.password-gate__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ============================================================
+   PLAY PAGE — SLIDER OVERLAY
+   ============================================================ */
+
+.play-slider {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-slider);
+  transform: translateX(100%);   /* off-screen right by default */
+  will-change: transform;
+}
+
+.play-slider.is-active {
+  transform: translateX(0);
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   Mobile-first: base styles target 375px
+   ============================================================ */
+
+/* Tablet — 768px+ */
+@media (min-width: 768px) {
+  :root {
+    --container-pad: var(--space-10);
+  }
+}
+
+/* Desktop — 1280px+ */
+@media (min-width: 1280px) {
+  :root {
+    --container-pad: var(--space-20);   /* 80px per spec */
+  }
+}

@@ -1,0 +1,391 @@
+/* ============================================================
+   WORK PAGE
+   Same 50/50 grid + vertical line as About page.
+   Left  cell = project info
+   Right cell = media (image / placeholder)
+   ============================================================ */
+
+/* --- Archivo via Google Fonts <link> in <head> ------------ */
+
+/* --- Nav (identical to about.css) ------------------------- */
+.site-nav {
+  padding-block: var(--space-4);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-nav__list { gap: var(--space-6); }
+
+.site-nav__list a {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  transition: opacity var(--duration-fast) ease;
+}
+
+.site-nav__list a:hover { opacity: 0.55; }
+.site-nav__list a[aria-current="page"] { font-weight: 700; }
+
+.site-nav .container {
+  max-width: none;
+  padding-inline: 40px;
+}
+
+/* --- Page shell -------------------------------------------- */
+.work-page { padding-top: 56px; }
+
+/* Wrapper for all project rows — vertical line lives here */
+.work-rows { position: relative; }
+
+.work-rows::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background-color: var(--color-border);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   PROJECT ROW — same 50/50 grid as about-row
+   ============================================================ */
+.work-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  border-top: 1px solid var(--color-border);
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Left cell: project info ------------------------------ */
+.work-row__info {
+  padding-left: 40px;
+  padding-right: 20px;
+  padding-top: 1.75rem;
+  padding-bottom: 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Project name — bold top line */
+.work-project-name {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--text-xs);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+  max-width: 30ch;   /* wraps after "…COMPANY, NAME" like the reference */
+}
+
+/* "NAME WITHHELD*" — bold italic */
+.work-name-withheld {
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Service tags — slightly tighter leading */
+.work-services {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.work-services li {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+/* NDA / password note — body text */
+.work-nda {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-primary);
+  margin-top: var(--space-6);
+  max-width: 46ch;   /* wraps to ~3 lines like the reference */
+}
+
+/* Email link inside the NDA note */
+.work-nda a {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* --- Right cell: media ------------------------------------ */
+.work-row__media {
+  padding-left: 24px;
+  padding-right: 40px;
+  padding-top: 1.75rem;
+  padding-bottom: 5rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Media wrapper — contains image + overlays */
+.work-media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Media that links to a case study — behaves as a button */
+.work-media--link {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.work-media--link img {
+  transition: transform var(--duration-base) var(--ease-out-expo),
+              opacity var(--duration-fast) ease;
+}
+
+.work-media--link:hover img {
+  transform: scale(1.03);
+  opacity: 0.92;
+}
+
+.work-media--link:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 3px;
+}
+
+/* Actual image */
+.work-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* Placeholder box (no media yet) — centered navy caption */
+.work-media--placeholder {
+  aspect-ratio: 3 / 2;
+  background-color: #D9D5D5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+}
+
+.work-placeholder__text {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* "NOT PUBLICLY SHAREABLE" — bold italic navy text, no pill */
+.work-media__badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-style: normal;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* "CASE STUDY" / "CASE STUDY COMING SOON" — pill BELOW the box, right-aligned */
+.work-cta {
+  align-self: flex-end;
+  margin-top: var(--space-6);
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-text-primary);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.work-cta:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+/* ============================================================
+   FOOTER — same style as about.css
+   ============================================================ */
+.work-footer {
+  padding-bottom: var(--space-24);
+  width: 100%;
+}
+
+/* Navigation pills row — BACK (left) + PLAY (right), above footer links */
+.work-footer__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 40px;
+  padding-bottom: var(--space-12);
+  position: relative;
+}
+
+/* Continue the central vertical line down through this row so it meets
+   the top of the footer's horizontal border line. */
+.work-footer__nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background-color: var(--color-border);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Footer info links — below the pills. Border-top spans the full page
+   width (edge to edge); content is inset via padding-inline. */
+.work-footer__links {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-8);
+  padding-inline: 40px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.footer-links a,
+.footer-links button,
+.footer-credit {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.footer-links a:hover,
+.footer-links button:hover { opacity: 0.55; }
+
+/* Copyright line is not a link — keep the default arrow cursor */
+.footer-credit { cursor: default; }
+
+/* Page nav pills — BACK and PLAY */
+.footer-page-nav {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+}
+
+.footer-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.footer-nav-pill:hover {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+/* ============================================================
+   RESPONSIVE — Tablet 768px–1279px
+   ============================================================ */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .work-row__info   { padding-left: 24px; padding-right: 16px; }
+  .work-row__media  { padding-left: 20px; padding-right: 24px; }
+  .work-footer__nav,
+  .work-footer__links { padding-inline: 24px; }
+  .site-nav .container { padding-inline: 24px; }
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile ≤ 767px
+   ============================================================ */
+@media (max-width: 767px) {
+  .work-page { padding-top: 48px; }
+
+  .work-row {
+    grid-template-columns: 1fr;
+    padding-inline: 20px;
+  }
+
+  .work-row__info {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: var(--space-6);
+  }
+
+  .work-row__media {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: var(--space-12);
+  }
+
+  .work-footer {
+    gap: var(--space-6);
+  }
+
+  .work-footer__nav,
+  .work-footer__links { padding-inline: 20px; }
+
+  .site-nav .container { padding-inline: 20px; }
+}

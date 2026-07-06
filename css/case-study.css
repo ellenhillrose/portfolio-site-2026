@@ -1,0 +1,251 @@
+/* ============================================================
+   CASE STUDY PAGE (password-protected)
+   Vertical stack of 16:9 slide graphics, 80px side margins.
+   Same nav / footer / button styling as the rest of the site.
+   ============================================================ */
+
+/* --- Nav --------------------------------------------------- */
+.site-nav {
+  padding-block: var(--space-4);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-nav__list { gap: var(--space-6); }
+
+.site-nav__list a {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  transition: opacity var(--duration-fast) ease;
+}
+
+.site-nav__list a:hover { opacity: 0.55; }
+.site-nav__list a[aria-current="page"] { font-weight: 700; }
+
+.site-nav .container {
+  max-width: none;
+  padding-inline: 80px;
+}
+
+/* --- Page shell -------------------------------------------- */
+.case-page {
+  padding-top: 56px;          /* clear fixed nav */
+}
+
+/* --- Slide stack ------------------------------------------- */
+.case-slides {
+  padding: 96px 80px 0;       /* top gap + 80px side margins */
+  display: flex;
+  flex-direction: column;
+  gap: 100px;                 /* vertical gap between slides */
+}
+
+.case-slide {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+/* --- Embedded Google Slides deck --------------------------- */
+.case-embed {
+  padding: 96px 80px 0;       /* match the slide stack's gutters */
+}
+
+.case-embed__frame {
+  position: relative;
+  width: 100%;
+  height: 0;
+  /* 16:9 slide (56.25%) + ~30px for the player's control bar, so the slide
+     fills the full width with no black letterbox bars on the sides. */
+  padding-bottom: calc(56.25% + 30px);
+  border: 1px solid var(--color-border);
+}
+
+.case-embed__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ============================================================
+   PASSWORD GATE
+   ============================================================ */
+.password-gate {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+}
+
+.password-gate[hidden] { display: none; }
+
+.password-gate__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.password-gate__title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+}
+
+.password-gate__note {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.password-gate__input {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-text-primary);
+  border-radius: 0;
+  padding: var(--space-2) var(--space-1);
+  text-align: center;
+  outline: none;
+}
+
+.password-gate__input:focus { border-bottom-color: var(--color-accent); }
+
+.password-gate__submit {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-bg);
+  background: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-6);
+  cursor: pointer;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.password-gate__submit:hover { opacity: 0.85; }
+
+.password-gate__error {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: #b00020;
+  min-height: 1.2em;
+}
+
+.password-gate__error[hidden] { display: none; }
+
+/* ============================================================
+   FOOTER — same as Work page
+   ============================================================ */
+.case-footer {
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 96px;
+  padding-bottom: var(--space-24);
+  width: 100%;
+}
+
+.case-footer__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-12);
+}
+
+.footer-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.footer-nav-pill:hover {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+.case-footer__links {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.case-footer__links a,
+.case-footer__links button,
+.case-footer__links .footer-credit {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.case-footer__links a:hover,
+.case-footer__links button:hover { opacity: 0.55; }
+
+/* Copyright line is not a link — keep the default arrow cursor */
+.case-footer__links .footer-credit { cursor: default; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .site-nav .container { padding-inline: 40px; }
+  .case-slides { padding: 64px 40px 0; gap: 72px; }
+  .case-embed { padding: 64px 40px 0; }
+  .case-footer { padding-inline: 40px; padding-top: 64px; }
+}
+
+@media (max-width: 767px) {
+  .site-nav .container { padding-inline: 20px; }
+  .case-slides { padding: 40px 20px 0; gap: 40px; }
+  .case-embed { padding: 40px 20px 0; }
+  .case-footer { padding-inline: 20px; padding-top: 48px; }
+  .case-footer__nav { padding-bottom: var(--space-8); }
+}

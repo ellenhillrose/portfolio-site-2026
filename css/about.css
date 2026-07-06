@@ -1,0 +1,482 @@
+/* ============================================================
+   ABOUT PAGE
+   Layout: 50/50 split — labels left, content right
+   Vertical grey line = border-left on every right (content) cell
+   Horizontal grey lines = border-top on every row
+   ============================================================ */
+
+/* --- Archivo loaded via Google Fonts <link> in <head> ------ */
+
+/* --- Nav --------------------------------------------------- */
+.site-nav {
+  padding-block: var(--space-4);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-nav__list {
+  gap: var(--space-6);
+}
+
+.site-nav__list a {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  transition: opacity var(--duration-fast) ease;
+}
+
+.site-nav__list a:hover        { opacity: 0.55; }
+.site-nav__list a[aria-current="page"] { font-weight: 700; }
+
+/* Override .container inside nav to match the 40px left inset */
+.site-nav .container {
+  max-width: none;
+  padding-inline: 40px;
+}
+
+/* --- Page shell -------------------------------------------- */
+.about-page {
+  padding-top: 56px;   /* clear the fixed nav */
+}
+
+/* .about-rows wraps all section rows but NOT the footer.
+   The vertical grey line lives here so it terminates exactly at
+   the footer's border-top and doesn't extend into the footer. */
+.about-rows {
+  position: relative;
+}
+
+.about-rows::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background-color: var(--color-border);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   ROW — full-viewport-width two-column grid
+   Left cell  = label side  (50%)
+   Right cell = content side (50%) with the vertical grey line
+   ============================================================ */
+.about-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* exactly 50 / 50 */
+  align-items: start;
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.75rem;             /* 28px — sit close under the line */
+  padding-bottom: 5rem;             /* 80px — breathing room below */
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero — no top border.
+   align-items: start → photo top locks to the same edge as the headline top,
+   placing it at the cap-height of the "E" in ELLEN ROSE. */
+.about-row--hero {
+  border-top: none;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  align-items: start;
+}
+
+/* Label cell — left half */
+.about-row__label {
+  padding-left: 40px;
+  padding-right: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Content cell — right half.
+   Vertical line comes from .about-page::after, not border-left. */
+.about-row__content {
+  padding-left: 24px;
+  padding-right: 40px;
+  position: relative;   /* so content sits above the pseudo-element */
+  z-index: 1;
+}
+
+/* ============================================================
+   SECTION LABELS  — 110% leading per spec
+   ============================================================ */
+.section-label {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: 1.1;                 /* 110% */
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  display: block;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+/*
+  Headline fills the right half at each breakpoint.
+  Archivo cap-height ≈ 0.72 × font-size → photo matches the "E".
+
+  Desktop (1280px):
+    Right inner width = 50vw − 24px(left pad) − 40px(right pad)
+    ≈ 640 − 64 = 576px
+    Font-size that fills 576px ≈ 6.5rem (104px)
+    Photo = 6.5rem × 0.72 = 4.68rem ≈ 75px
+*/
+.about-headline {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 6rem;                  /* fills right column at 1280px */
+  line-height: 0.92;
+  letter-spacing: var(--tracking-headline);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.about-photo {
+  width:  calc(6rem * 0.73);        /* cap-height of "E" = 0.73em ≈ 70px */
+  height: calc(6rem * 0.73);
+  /* Nudge down by the negative half-leading so top of circle = top of "E"
+     half-leading = (line-height − 1) / 2 × font-size = (0.92 − 1)/2 × 6rem = −0.24rem
+     We add the absolute value to push DOWN into the cap-height zone.        */
+  margin-top: calc((1 - 0.92) / 2 * 6rem);
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   BODY TEXT
+   ============================================================ */
+.body-text {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-primary);
+}
+
+.body-text p + p { margin-top: var(--space-4); }
+
+/* Design-principles link under the About copy — reads as a continuation
+   of the body paragraphs (same body font size/style, sentence case) */
+.about-principles-link {
+  margin-top: var(--space-4);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  text-transform: none;
+  color: var(--color-text-primary);
+}
+.about-principles-link a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--duration-fast) ease;
+}
+.about-principles-link a:hover {
+  opacity: 0.55;
+}
+
+/* ============================================================
+   DESIGN EXPERTISE
+   ============================================================ */
+.expertise-block + .expertise-block {
+  margin-top: var(--space-8);
+}
+
+.expertise-block__heading {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.expertise-block__body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   CONSULTING EXPERTISE
+   ============================================================ */
+.consulting-list {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-primary);
+}
+
+.consulting-list li + li { margin-top: var(--space-1); }
+
+/* ============================================================
+   EDUCATION
+   ============================================================ */
+.education-entry + .education-entry { margin-top: var(--space-8); }
+
+.education-entry__school {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--text-base);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.education-entry__detail {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   DESIGN-PRINCIPLES PAGE — centered image + Back/Work pills
+   ============================================================ */
+.principles-figure {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-24) 40px;   /* generous vertical space above/below */
+}
+.principles-figure img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(640px, 100%);
+  max-height: 82vh;
+}
+
+/* Back / Work pill row, above the footer (mirrors the Work page) */
+.about-page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px var(--space-12);
+}
+
+/* Resume page — two stacked, centered page images */
+.resume-figures {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-24) 40px;
+}
+.resume-figures img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(760px, 100%);
+}
+
+/* ============================================================
+   CLIENTS
+   ============================================================ */
+.clients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--space-8);
+}
+
+.clients-grid li {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   NEXT-PAGE BUTTON  (sits above the footer's grey line)
+   ============================================================ */
+.about-next {
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: var(--space-20);     /* 80px space below clients */
+  padding-bottom: var(--space-12);  /* 48px gap above the footer line */
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.about-footer {
+  border-top: 1px solid var(--color-border);
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: var(--space-8);          /* 32px above footer links */
+  padding-bottom: var(--space-24);      /* 96px — standard footer breathing room */
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-8);
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.footer-links a,
+.footer-links button,
+.footer-credit {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.footer-links a:hover,
+.footer-links button:hover { opacity: 0.55; }
+
+/* Copyright line is not a link — keep the default arrow cursor */
+.footer-credit { cursor: default; }
+
+.footer-next {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.footer-next:hover {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+/* Non-interactive variant (e.g. "Coming Soon") */
+.footer-next--static { cursor: default; }
+.footer-next--static:hover {
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   RESPONSIVE — Tablet 768px – 1279px
+   ============================================================ */
+@media (min-width: 768px) and (max-width: 1279px) {
+
+  /* Headline scales with vw to fill right 50% minus padding */
+  .about-headline {
+    font-size: clamp(3rem, 6.5vw, 6rem);
+  }
+
+  /* Photo matches cap-height of headline at same size */
+  .about-photo {
+    width:  calc(clamp(3rem, 6.5vw, 6rem) * 0.73);
+    height: calc(clamp(3rem, 6.5vw, 6rem) * 0.73);
+  }
+
+  .about-row__label   { padding-left: 24px; }
+  .about-row__content { padding-left: 20px; padding-right: 24px; }
+  .about-footer       { padding-inline: 24px; }
+  .site-nav .container { padding-inline: 24px; }
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile ≤ 767px  (single-column stack)
+   ============================================================ */
+@media (max-width: 767px) {
+
+  .about-page { padding-top: 48px; }
+
+  .about-row {
+    grid-template-columns: 1fr;
+    padding-inline: 20px;
+    padding-top: 1.25rem;
+    padding-bottom: 3rem;
+  }
+
+  .about-row--hero {
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+    align-items: start;
+  }
+
+  /* On mobile, no vertical line — replace with spacing */
+  .about-row__label {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-row__content {
+    border-left: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Headline fills single column */
+  .about-headline {
+    font-size: clamp(2.5rem, 12vw, 3.75rem);
+  }
+
+  .about-photo {
+    width:  calc(clamp(2.5rem, 12vw, 3.75rem) * 0.72);
+    height: calc(clamp(2.5rem, 12vw, 3.75rem) * 0.72);
+    margin-bottom: 0.5rem;
+  }
+
+  .about-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-inline: 20px;
+    gap: 1.5rem;
+  }
+
+  .site-nav .container { padding-inline: 20px; }
+}
