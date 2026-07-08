@@ -85,7 +85,7 @@
 .about-row--hero {
   border-top: none;
   padding-top: 1.5rem;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;   /* doubled — more breathing room above the ABOUT line */
   align-items: start;
 }
 
@@ -145,8 +145,8 @@
 }
 
 .about-photo {
-  width:  calc(6rem * 0.73);        /* cap-height of "E" = 0.73em ≈ 70px */
-  height: calc(6rem * 0.73);
+  width:  calc(6rem * 0.73 * 2);    /* doubled — top stays aligned via margin-top below */
+  height: calc(6rem * 0.73 * 2);
   /* Nudge down by the negative half-leading so top of circle = top of "E"
      half-leading = (line-height − 1) / 2 × font-size = (0.92 − 1)/2 × 6rem = −0.24rem
      We add the absolute value to push DOWN into the cap-height zone.        */
@@ -415,10 +415,10 @@
     font-size: clamp(3rem, 6.5vw, 6rem);
   }
 
-  /* Photo matches cap-height of headline at same size */
+  /* Photo doubled; top stays aligned with the headline via margin-top */
   .about-photo {
-    width:  calc(clamp(3rem, 6.5vw, 6rem) * 0.73);
-    height: calc(clamp(3rem, 6.5vw, 6rem) * 0.73);
+    width:  calc(clamp(3rem, 6.5vw, 6rem) * 0.73 * 2);
+    height: calc(clamp(3rem, 6.5vw, 6rem) * 0.73 * 2);
   }
 
   .about-row__label   { padding-left: 24px; }
