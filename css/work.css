@@ -122,7 +122,7 @@
   letter-spacing: var(--tracking-body);
   color: var(--color-text-primary);
   margin-top: var(--space-6);
-  max-width: 46ch;   /* wraps to ~3 lines like the reference */
+  max-width: 34em;   /* wide enough that the 2nd forced line stays on one line */
 }
 
 /* Email link inside the NDA note */
@@ -361,6 +361,10 @@
    ============================================================ */
 @media (max-width: 767px) {
   .work-page { padding-top: 48px; }
+
+  /* Remove the decorative central vertical line on mobile */
+  .work-rows::after { display: none; }
+  .work-footer__nav::before { display: none; }
 
   .work-row {
     grid-template-columns: 1fr;

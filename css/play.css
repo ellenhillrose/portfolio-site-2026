@@ -208,6 +208,16 @@
   .site-nav .container { padding-inline: 20px; }
   .play-footer { padding-inline: 20px; }
   .play-page-nav { padding-inline: 20px; }
+
+  /* Fill the screen height: collage stays at the top, and the ABOUT/WORK
+     pills + footer are pushed to the bottom of the viewport. */
+  .play-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  .play-page-nav { margin-top: auto; }   /* pushes the nav + footer down */
 }
 
 /* ============================================================
