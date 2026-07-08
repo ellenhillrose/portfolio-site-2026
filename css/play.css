@@ -218,6 +218,14 @@
     min-height: 100dvh;
   }
   .play-page-nav { margin-top: auto; }   /* pushes the nav + footer down */
+
+  /* Enlarge the central collage on mobile to ~90% of screen width
+     (mimics mobile.png). Scales from the top so it stays near the top. */
+  .play-stage {
+    transform: scale(1.45);
+    transform-origin: top center;
+    margin-top: 3vh;
+  }
 }
 
 /* ============================================================
