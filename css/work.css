@@ -113,7 +113,8 @@
   color: var(--color-text-primary);
 }
 
-/* NDA / password note — body text */
+/* NDA / password note — body text. Now lives in the media column's
+   footer row (below the image), left-aligned with the image edge. */
 .work-nda {
   font-family: var(--font-sans);
   font-weight: 400;
@@ -121,7 +122,7 @@
   line-height: var(--leading-body);
   letter-spacing: var(--tracking-body);
   color: var(--color-text-primary);
-  margin-top: var(--space-6);
+  margin-top: 0;
   max-width: 34em;   /* wide enough that the 2nd forced line stays on one line */
 }
 
@@ -220,10 +221,20 @@
   white-space: nowrap;
 }
 
-/* "CASE STUDY" / "CASE STUDY COMING SOON" — pill BELOW the box, right-aligned */
-.work-cta {
-  align-self: flex-end;
+/* Footer row below the image: NDA blurb (left, aligned to image edge)
+   + CASE STUDY pill (right). Both top-aligned. */
+.work-media__footer {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
   margin-top: var(--space-6);
+}
+
+/* "CASE STUDY" / "CASE STUDY COMING SOON" — pill on the right of the
+   footer row, top-aligned with the NDA blurb. */
+.work-cta {
+  margin-left: auto;   /* push to the right edge even when no NDA blurb */
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   font-family: var(--font-sans);
@@ -383,6 +394,14 @@
     padding-top: 0;
     padding-bottom: var(--space-12);
   }
+
+  /* Stack NDA blurb above the pill on narrow screens */
+  .work-media__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  .work-cta { margin-left: 0; }
 
   .work-footer {
     gap: var(--space-6);

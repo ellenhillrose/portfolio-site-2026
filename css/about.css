@@ -168,6 +168,9 @@
   line-height: var(--leading-body);
   letter-spacing: var(--tracking-body);
   color: var(--color-text-primary);
+  /* Cap line length so copy wraps no wider than the Education
+     "…Academic Excellence" line (≈30.75em at 16px). */
+  max-width: 30.75em;
 }
 
 .body-text p + p { margin-top: var(--space-4); }
@@ -218,6 +221,8 @@
   line-height: var(--leading-body);
   letter-spacing: var(--tracking-body);
   color: var(--color-text-primary);
+  /* Match the About copy: wrap no wider than the Education line. */
+  max-width: 30.75em;
 }
 
 /* ============================================================
