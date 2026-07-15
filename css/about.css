@@ -297,9 +297,9 @@
 }
 .resume-figures img {
   display: block;
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: min(760px, 100%);
+  max-width: min(920px, 100%);
 }
 
 /* ============================================================
