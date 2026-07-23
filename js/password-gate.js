@@ -6,7 +6,6 @@
 const PASSWORDS = {
   // key: page slug, value: plaintext password (replace before deploy)
   'ai-infrastructure': 'knockknock',
-  'leaders-of-design': 'knockknock',
   'food-and-beverage': 'knockknock',
   'venture-capital':   'knockknock',
   'retail-pharmacy':   'knockknock',

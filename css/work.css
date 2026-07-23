@@ -183,6 +183,15 @@
   object-fit: cover;
 }
 
+/* Companion-app GIF has a stray black line baked into its right edge.
+   Overscale slightly and left-align so .work-media's overflow:hidden
+   clips the right edge (and matching left) out of view. */
+.work-media img.work-media__gif {
+  width: calc(100% + 16px);
+  max-width: none;
+  object-position: left center;
+}
+
 /* Placeholder box (no media yet) — centered navy caption */
 .work-media--placeholder {
   aspect-ratio: 3 / 2;
