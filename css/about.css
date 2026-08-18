@@ -1,6 +1,6 @@
 /* ============================================================
    ABOUT PAGE
-   Layout: 50/50 split — labels left, content right
+   Layout: 50/50 split â€” labels left, content right
    Vertical grey line = border-left on every right (content) cell
    Horizontal grey lines = border-top on every row
    ============================================================ */
@@ -63,7 +63,7 @@
 }
 
 /* ============================================================
-   ROW — full-viewport-width two-column grid
+   ROW â€” full-viewport-width two-column grid
    Left cell  = label side  (50%)
    Right cell = content side (50%) with the vertical grey line
    ============================================================ */
@@ -72,24 +72,24 @@
   grid-template-columns: 1fr 1fr;   /* exactly 50 / 50 */
   align-items: start;
   border-top: 1px solid var(--color-border);
-  padding-top: 1.75rem;             /* 28px — sit close under the line */
-  padding-bottom: 5rem;             /* 80px — breathing room below */
+  padding-top: 1.75rem;             /* 28px â€” sit close under the line */
+  padding-bottom: 5rem;             /* 80px â€” breathing room below */
   width: 100%;
   position: relative;
   z-index: 1;
 }
 
-/* Hero — no top border.
-   align-items: start → photo top locks to the same edge as the headline top,
+/* Hero â€” no top border.
+   align-items: start â†’ photo top locks to the same edge as the headline top,
    placing it at the cap-height of the "E" in ELLEN ROSE. */
 .about-row--hero {
   border-top: none;
   padding-top: 1.5rem;
-  padding-bottom: 4rem;   /* doubled — more breathing room above the ABOUT line */
+  padding-bottom: 4rem;   /* doubled â€” more breathing room above the ABOUT line */
   align-items: start;
 }
 
-/* Label cell — left half */
+/* Label cell â€” left half */
 .about-row__label {
   padding-left: 40px;
   padding-right: 20px;
@@ -97,7 +97,7 @@
   z-index: 1;
 }
 
-/* Content cell — right half.
+/* Content cell â€” right half.
    Vertical line comes from .about-page::after, not border-left. */
 .about-row__content {
   padding-left: 24px;
@@ -107,7 +107,7 @@
 }
 
 /* ============================================================
-   SECTION LABELS  — 110% leading per spec
+   SECTION LABELS  â€” 110% leading per spec
    ============================================================ */
 .section-label {
   font-family: var(--font-sans);
@@ -126,13 +126,13 @@
 
 /*
   Headline fills the right half at each breakpoint.
-  Archivo cap-height ≈ 0.72 × font-size → photo matches the "E".
+  Archivo cap-height â‰ˆ 0.72 Ã— font-size â†’ photo matches the "E".
 
   Desktop (1280px):
-    Right inner width = 50vw − 24px(left pad) − 40px(right pad)
-    ≈ 640 − 64 = 576px
-    Font-size that fills 576px ≈ 6.5rem (104px)
-    Photo = 6.5rem × 0.72 = 4.68rem ≈ 75px
+    Right inner width = 50vw âˆ’ 24px(left pad) âˆ’ 40px(right pad)
+    â‰ˆ 640 âˆ’ 64 = 576px
+    Font-size that fills 576px â‰ˆ 6.5rem (104px)
+    Photo = 6.5rem Ã— 0.72 = 4.68rem â‰ˆ 75px
 */
 .about-headline {
   font-family: var(--font-sans);
@@ -148,7 +148,7 @@
   width:  calc(6rem * 0.73 * 2 * 1.4);   /* +40% larger; top stays aligned via margin-top */
   height: calc(6rem * 0.73 * 2 * 1.4);
   /* Nudge down by the negative half-leading so top of circle = top of "E"
-     half-leading = (line-height − 1) / 2 × font-size = (0.92 − 1)/2 × 6rem = −0.24rem
+     half-leading = (line-height âˆ’ 1) / 2 Ã— font-size = (0.92 âˆ’ 1)/2 Ã— 6rem = âˆ’0.24rem
      We add the absolute value to push DOWN into the cap-height zone.        */
   margin-top: calc((1 - 0.92) / 2 * 6rem);
   border-radius: var(--radius-full);
@@ -169,13 +169,13 @@
   letter-spacing: var(--tracking-body);
   color: var(--color-text-primary);
   /* Cap line length so copy wraps no wider than the Education
-     "…Academic Excellence" line (≈30.75em at 16px). */
+     "â€¦Academic Excellence" line (â‰ˆ30.75em at 16px). */
   max-width: 30.75em;
 }
 
 .body-text p + p { margin-top: var(--space-4); }
 
-/* Design-principles link under the About copy — reads as a continuation
+/* Design-principles link under the About copy â€” reads as a continuation
    of the body paragraphs (same body font size/style, sentence case) */
 .about-principles-link {
   margin-top: var(--space-4);
@@ -187,14 +187,10 @@
   text-transform: none;
   color: var(--color-text-primary);
 }
-.about-principles-link a {
-  color: inherit;
-  text-decoration: none;
-  transition: opacity var(--duration-fast) ease;
+.about-principles-link {
+  margin-top: var(--space-6);
 }
-.about-principles-link a:hover {
-  opacity: 0.55;
-}
+/* Pill button â€” matches .footer-next (defined below) */
 
 /* ============================================================
    DESIGN EXPERTISE
@@ -264,7 +260,7 @@
 }
 
 /* ============================================================
-   DESIGN-PRINCIPLES PAGE — centered image + Back/Work pills
+   DESIGN-PRINCIPLES PAGE â€” centered image + Back/Work pills
    ============================================================ */
 .principles-figure {
   display: flex;
@@ -287,7 +283,7 @@
   padding: 0 40px var(--space-12);
 }
 
-/* Resume page — two stacked, centered page images */
+/* Resume page â€” two stacked, centered page images */
 .resume-figures {
   display: flex;
   flex-direction: column;
@@ -342,7 +338,7 @@
   padding-left: 40px;
   padding-right: 40px;
   padding-top: var(--space-8);          /* 32px above footer links */
-  padding-bottom: var(--space-24);      /* 96px — standard footer breathing room */
+  padding-bottom: var(--space-24);      /* 96px â€” standard footer breathing room */
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -379,7 +375,7 @@
 .footer-links a:hover,
 .footer-links button:hover { opacity: 0.55; }
 
-/* Copyright line is not a link — keep the default arrow cursor */
+/* Copyright line is not a link â€” keep the default arrow cursor */
 .footer-credit { cursor: default; }
 
 .footer-next {
@@ -411,7 +407,7 @@
 }
 
 /* ============================================================
-   RESPONSIVE — Tablet 768px – 1279px
+   RESPONSIVE â€” Tablet 768px â€“ 1279px
    ============================================================ */
 @media (min-width: 768px) and (max-width: 1279px) {
 
@@ -433,7 +429,7 @@
 }
 
 /* ============================================================
-   RESPONSIVE — Mobile ≤ 767px  (single-column stack)
+   RESPONSIVE â€” Mobile â‰¤ 767px  (single-column stack)
    ============================================================ */
 @media (max-width: 767px) {
 
