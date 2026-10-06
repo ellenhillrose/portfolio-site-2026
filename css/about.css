@@ -168,10 +168,12 @@
   line-height: var(--leading-body);
   letter-spacing: var(--tracking-body);
   color: var(--color-text-primary);
-  /* Cap line length so copy wraps no wider than the Education
-     "…Academic Excellence" line (≈30.75em at 16px). */
-  max-width: 30.75em;
 }
+
+/* Cap the TEXT width (not the padded container) so the About copy wraps
+   at the same right edge as the Design Expertise body, which caps its
+   paragraphs the same way (≈30.75em at 16px). */
+.body-text p { max-width: 30.75em; }
 
 .body-text p + p { margin-top: var(--space-4); }
 
