@@ -170,11 +170,8 @@
   color: var(--color-text-primary);
 }
 
-/* Cap the TEXT width (not the padded container) so the About copy wraps
-   at the same right edge as the Design Expertise body, which caps its
-   paragraphs the same way (≈30.75em at 16px). */
-.body-text p { max-width: 30.75em; }
-
+/* About copy fills the full content column so its right edge aligns with
+   the ELLEN ROSE headline (no narrow cap that would leave awkward widows). */
 .body-text p + p { margin-top: var(--space-4); }
 
 /* Design-principles link under the About copy — reads as a continuation
@@ -219,8 +216,6 @@
   line-height: var(--leading-body);
   letter-spacing: var(--tracking-body);
   color: var(--color-text-primary);
-  /* Match the About copy: wrap no wider than the Education line. */
-  max-width: 30.75em;
 }
 
 /* ============================================================
@@ -240,10 +235,6 @@
 
 .consulting-list li + li,
 .expertise-list li + li { margin-top: var(--space-1); }
-
-/* AI-Native list wraps like the other expertise bodies — cap total width
-   so its right edge stays aligned (bullet padding is inside border-box). */
-.expertise-list { max-width: 30.75em; }
 
 /* ============================================================
    EDUCATION
