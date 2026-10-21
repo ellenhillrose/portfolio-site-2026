@@ -170,8 +170,10 @@
   color: var(--color-text-primary);
 }
 
-/* About copy fills the full content column so its right edge aligns with
-   the ELLEN ROSE headline (no narrow cap that would leave awkward widows). */
+/* Cap the copy at the width of the ELLEN ROSE headline (≈33.8em at the
+   desktop 6rem size) so its right edge aligns with the final "E" rather
+   than stretching the full column on wide screens. */
+.body-text p { max-width: 33.8em; }
 .body-text p + p { margin-top: var(--space-4); }
 
 /* Design-principles link under the About copy — reads as a continuation
@@ -216,6 +218,8 @@
   line-height: var(--leading-body);
   letter-spacing: var(--tracking-body);
   color: var(--color-text-primary);
+  /* Align right edge with the ELLEN ROSE headline, like the About copy. */
+  max-width: 33.8em;
 }
 
 /* ============================================================
@@ -235,6 +239,9 @@
 
 .consulting-list li + li,
 .expertise-list li + li { margin-top: var(--space-1); }
+
+/* AI-Native list aligns its right edge with the headline too. */
+.expertise-list { max-width: 33.8em; }
 
 /* ============================================================
    EDUCATION
